@@ -5,9 +5,10 @@ using UnityEngine.PlayerLoop;
 
 public class Karakter : MonoBehaviour
 {
+    public float hiz = 0.5f;
     private void FixedUpdate()
     {
-        transform.Translate(Vector3.forward * .5f * Time.deltaTime);
+        transform.Translate(Vector3.forward * hiz * Time.deltaTime);
     }
 
     void Update()
@@ -16,7 +17,7 @@ public class Karakter : MonoBehaviour
         {
             if (Input.GetAxis("Mouse X") < 0)
             {
-                transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x - .1f, transform.position.y, transform.position.z),0.3f);
+                transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x - .1f, transform.position.y, transform.position.z), 0.3f);
             }
             if (Input.GetAxis("Mouse X") > 0)
             {
