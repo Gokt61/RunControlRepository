@@ -5,10 +5,11 @@ using UnityEngine.PlayerLoop;
 
 public class Karakter : MonoBehaviour
 {
-    public float hiz = 0.5f;
+    public GameManager _GameManager;
+
     private void FixedUpdate()
     {
-        transform.Translate(Vector3.forward * hiz * Time.deltaTime);
+        transform.Translate(Vector3.forward * 0.5f * Time.deltaTime);
     }
 
     void Update()
@@ -23,6 +24,14 @@ public class Karakter : MonoBehaviour
             {
                 transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x + .1f, transform.position.y, transform.position.z), 0.3f);
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "x2" || other.name == "+3")
+        {
+            _GameManager.AdamYonetimi(other.name,other.transform);
         }
     }
 }
