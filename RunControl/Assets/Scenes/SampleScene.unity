@@ -5681,7 +5681,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 341963383}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -27}
+  m_LocalPosition: {x: 0, y: 0, z: -27.081}
   m_LocalScale: {x: 0.5, y: 1, z: 0.5}
   m_Children:
   - {fileID: 1069450934}
@@ -7538,8 +7538,8 @@ GameObject:
   - component: {fileID: 452059747}
   - component: {fileID: 452059746}
   m_Layer: 0
-  m_Name: -4
-  m_TagString: Untagged
+  m_Name: 4
+  m_TagString: Cikartma
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12819,7 +12819,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 752394759}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.87}
+  m_LocalPosition: {x: 0, y: 0, z: 6.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5823231066889814083}
@@ -16455,8 +16455,8 @@ GameObject:
   - component: {fileID: 1000055724}
   - component: {fileID: 1000055723}
   m_Layer: 0
-  m_Name: +3
-  m_TagString: Untagged
+  m_Name: 3
+  m_TagString: Toplama
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23363,8 +23363,8 @@ GameObject:
   - component: {fileID: 1365628381}
   - component: {fileID: 1365628380}
   m_Layer: 0
-  m_Name: x2
-  m_TagString: Untagged
+  m_Name: 2
+  m_TagString: Carpma
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29541,7 +29541,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756576909}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.023}
+  m_LocalPosition: {x: 0, y: 0, z: -0.08}
   m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children:
   - {fileID: 1382172193}
@@ -30321,8 +30321,8 @@ GameObject:
   - component: {fileID: 1800900379}
   - component: {fileID: 1800900378}
   m_Layer: 0
-  m_Name: /2
-  m_TagString: Untagged
+  m_Name: 2
+  m_TagString: Bolme
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
