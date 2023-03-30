@@ -10,6 +10,9 @@ TagManager:
   - Toplama
   - Cikartma
   - Bolme
+  - Testere
+  - PervaneIgneler
+  - AltKarakterler
   layers:
   - Default
   - TransparentFX
