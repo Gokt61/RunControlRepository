@@ -7,7 +7,7 @@ namespace Goktug
 {
     public class Matematiksel_islemler : MonoBehaviour
     {
-        public static void Carpma(int GelenSayi,List<GameObject> Karakterler,Transform Pozisyon)
+        public static void Carpma(int GelenSayi,List<GameObject> Karakterler,Transform Pozisyon, List<GameObject> OlusturmaEfektleri)
         {
             int DonguSayisi = (GameManager.AnlikKarakterSayisi * GelenSayi) - GameManager.AnlikKarakterSayisi;
             //                                    10                 3      -            10           =  20
@@ -20,6 +20,16 @@ namespace Goktug
                 {
                     if (!item.activeInHierarchy)
                     {
+                        foreach (var item2 in OlusturmaEfektleri)
+                        {
+                            if (!item2.activeInHierarchy)
+                            {
+                                item2.SetActive(true);
+                                item2.transform.position = Pozisyon.position;
+                                item2.GetComponent<ParticleSystem>().Play();
+                                break;
+                            }
+                        }
                         item.transform.position = Pozisyon.position;
                         item.SetActive(true);
                         sayi++;
@@ -34,7 +44,7 @@ namespace Goktug
             GameManager.AnlikKarakterSayisi *= GelenSayi;
         }
 
-        public static void Toplama(int GelenSayi, List<GameObject> Karakterler, Transform Pozisyon)
+        public static void Toplama(int GelenSayi, List<GameObject> Karakterler, Transform Pozisyon, List<GameObject> OlusturmaEfektleri)
         {
             int sayi2 = 0;
             foreach (var item in Karakterler)
@@ -43,6 +53,17 @@ namespace Goktug
                 {
                     if (!item.activeInHierarchy)
                     {
+                         foreach (var item2 in OlusturmaEfektleri)
+                        {
+                            if (!item2.activeInHierarchy)
+                            {
+                                item2.SetActive(true);
+                                item2.transform.position = Pozisyon.position;
+                                item2.GetComponent<ParticleSystem>().Play();
+                                break;
+                            }
+                        }
+
                         item.transform.position = Pozisyon.position;
                         item.SetActive(true);
                         sayi2++;
@@ -58,12 +79,25 @@ namespace Goktug
 
         }
 
-        public static void Cikartma(int GelenSayi, List<GameObject> Karakterler)
+        public static void Cikartma(int GelenSayi, List<GameObject> Karakterler, List<GameObject> YokOlmaEfektleri)
         {
             if (GameManager.AnlikKarakterSayisi < GelenSayi)
             {
                 foreach (var item in Karakterler)
                 {
+                    foreach (var item2 in YokOlmaEfektleri)
+                    {
+                        if (!item2.activeInHierarchy)
+                        {
+                            Vector3 yeniPoz = new Vector3(item.transform.position.x, .23f,item.transform.position.z);
+
+                            item2.SetActive(true);
+                            item2.transform.position = yeniPoz;
+                            item2.GetComponent<ParticleSystem>().Play();
+                            break;
+                        }
+                    }
+
                     item.transform.position = Vector3.zero;
                     item.SetActive(false);
                 }
@@ -78,6 +112,19 @@ namespace Goktug
                     {
                         if (item.activeInHierarchy)
                         {
+                            foreach (var item2 in YokOlmaEfektleri)
+                            {
+                                if (!item2.activeInHierarchy)
+                                {
+                                    Vector3 yeniPoz = new Vector3(item.transform.position.x, .23f, item.transform.position.z);
+
+                                    item2.SetActive(true);
+                                    item2.transform.position = yeniPoz;
+                                    item2.GetComponent<ParticleSystem>().Play();
+                                    break;
+                                }
+                            }
+
                             item.transform.position = Vector3.zero;
                             item.SetActive(false);
                             sayi3++;
@@ -93,12 +140,25 @@ namespace Goktug
             }
         }
 
-        public static void Bolme(int GelenSayi, List<GameObject> Karakterler)
+        public static void Bolme(int GelenSayi, List<GameObject> Karakterler, List<GameObject> YokOlmaEfektleri)
         {
             if (GameManager.AnlikKarakterSayisi <= GelenSayi)
             {
                 foreach (var item in Karakterler)
                 {
+                    foreach (var item2 in YokOlmaEfektleri)
+                    {
+                        if (!item2.activeInHierarchy)
+                        {
+                            Vector3 yeniPoz = new Vector3(item.transform.position.x, .23f, item.transform.position.z);
+
+                            item2.SetActive(true);
+                            item2.transform.position = yeniPoz;
+                            item2.GetComponent<ParticleSystem>().Play();
+                            break;
+                        }
+                    }
+
                     item.transform.position = Vector3.zero;
                     item.SetActive(false);
                 }
@@ -115,6 +175,19 @@ namespace Goktug
                     {
                         if (item.activeInHierarchy)
                         {
+                            foreach (var item2 in YokOlmaEfektleri)
+                            {
+                                if (!item2.activeInHierarchy)
+                                {
+                                    Vector3 yeniPoz = new Vector3(item.transform.position.x, .23f, item.transform.position.z);
+
+                                    item2.SetActive(true);
+                                    item2.transform.position = yeniPoz;
+                                    item2.GetComponent<ParticleSystem>().Play();
+                                    break;
+                                }
+                            }
+
                             item.transform.position = Vector3.zero;
                             item.SetActive(false);
                             sayi4++;
