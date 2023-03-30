@@ -8,7 +8,6 @@ public class Ruzgar : MonoBehaviour
     {
         if (other.CompareTag("AltKarakterler"))
         {
-
             other.GetComponent<Rigidbody>().AddForce(new Vector3(-5, 0, 0), ForceMode.Impulse);
         }
     }
