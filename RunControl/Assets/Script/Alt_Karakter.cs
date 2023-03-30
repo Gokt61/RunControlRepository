@@ -30,5 +30,14 @@ public class Alt_Karakter : MonoBehaviour
             gameObject.SetActive(false);
 
         }
+        
+        if (other.CompareTag("Testere"))
+        {
+            Vector3 yeniPoz = new Vector3(transform.position.x, .23f, transform.position.z);
+
+            GameObject.FindWithTag("GameManager").GetComponent<GameManager>().YokOlmaEfektriOlustur(yeniPoz);
+            gameObject.SetActive(false);
+        }
+
     }
 }
