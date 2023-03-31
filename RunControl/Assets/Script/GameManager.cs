@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> Karakterler;
     public List<GameObject> OlusmaEfektleri;
     public List<GameObject> YokOlmaEfekleri;
+    public List<GameObject> AdamLekesiEfektleri;
 
 
     void Start()
@@ -59,7 +60,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void YokOlmaEfektriOlustur(Vector3 Pozisyon)
+    public void YokOlmaEfektriOlustur(Vector3 Pozisyon,bool Balyoz = false)
     {
         foreach (var item in YokOlmaEfekleri)
         {
@@ -70,6 +71,20 @@ public class GameManager : MonoBehaviour
                 item.GetComponent<ParticleSystem>().Play();
                 AnlikKarakterSayisi--;
                 break;
+            }
+        }
+
+        if (Balyoz)
+        {
+            Vector3 yeniPoz = new Vector3(Pozisyon.x, .005f, Pozisyon.z);
+            foreach (var item in AdamLekesiEfektleri)
+            {
+                if (!item.activeInHierarchy)
+                {
+                    item.SetActive(true);
+                    item.transform.position = yeniPoz;
+                    break;
+                }
             }
         }
     }
