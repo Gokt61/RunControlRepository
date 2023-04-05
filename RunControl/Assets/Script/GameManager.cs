@@ -6,7 +6,6 @@ using UnityEngine.AI;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject VarisNoktasi;
     public static int AnlikKarakterSayisi = 1;
 
 

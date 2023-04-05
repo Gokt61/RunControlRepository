@@ -7,16 +7,18 @@ using UnityEngine.Assertions.Must;
 public class Dusman : MonoBehaviour
 {
     public GameObject Saldiri_Hedefi;
-    NavMeshAgent _NavMesh;
+    public NavMeshAgent _NavMesh;
+    public Animator _Animator;
+    public GameManager _Gamemanager;
     bool saldiri_Basladimi;
     void Start()
     {
-        _NavMesh = GetComponent<NavMeshAgent>();
+
     }
 
     public void AnimasyonTetikle()
     {
-        GetComponent<Animator>().SetBool("Saldir", true);
+        _Animator.SetBool("Saldir", true);
         saldiri_Basladimi = true;
     }
 
@@ -33,8 +35,8 @@ public class Dusman : MonoBehaviour
         if (other.CompareTag("AltKarakterler"))
         {
             Vector3 yeniPoz = new Vector3(transform.position.x, .23f, transform.position.z);
+            _Gamemanager.YokOlmaEfektiOlustur(yeniPoz,false,true);
 
-            GameObject.FindWithTag("GameManager").GetComponent<GameManager>().YokOlmaEfektiOlustur(yeniPoz,false,true);
             gameObject.SetActive(false);
         }
     }
