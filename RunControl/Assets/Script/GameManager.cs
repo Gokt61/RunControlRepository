@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Goktug;
+using UnityEngine.AI;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class GameManager : MonoBehaviour
     [Header("LEVEL VERÝLERÝ")]
     public List<GameObject> Dusmanlar;
     public int KacDusmanOlsun;
+    public GameObject _AnaKarakter;
+    public bool OyunBittimi;
 
     void Start()
     {
@@ -59,6 +62,43 @@ public class GameManager : MonoBehaviour
         //}
     }
 
+    void SavasDurumu()
+    {
+        if (AnlikKarakterSayisi == 1 || KacDusmanOlsun == 0)
+        {
+            OyunBittimi = true;
+
+            foreach (var item in Dusmanlar)
+            {
+                if (item.activeInHierarchy)
+                {
+                    item.GetComponent<Animator>().SetBool("Saldir", false);
+                    item.GetComponent<NavMeshAgent>().stoppingDistance = 0.3f;
+                }
+            }
+
+            foreach (var item in Karakterler)
+            {
+                if (item.activeInHierarchy)
+                {
+                    item.GetComponent<Animator>().SetBool("Saldir", false);
+                    item.GetComponent<NavMeshAgent>().stoppingDistance = 0.3f;
+                }
+            }
+
+            _AnaKarakter.GetComponent<Animator>().SetBool("Saldir", false);
+
+            if (AnlikKarakterSayisi < KacDusmanOlsun || AnlikKarakterSayisi == KacDusmanOlsun)
+            {
+                Debug.Log("Kaybettin");
+            }
+            else
+            {
+                Debug.Log("Kazandýn");
+            }
+        }
+    }
+
     public void AdamYonetimi(string islemTuru,int GelenSayi, Transform Pozisyon)
     {
         switch (islemTuru)
@@ -82,7 +122,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void YokOlmaEfektriOlustur(Vector3 Pozisyon,bool Balyoz = false)
+    public void YokOlmaEfektiOlustur(Vector3 Pozisyon,bool Balyoz = false,bool Durum=false)
     {
         foreach (var item in YokOlmaEfekleri)
         {
@@ -91,7 +131,14 @@ public class GameManager : MonoBehaviour
                 item.SetActive(true);
                 item.transform.position = Pozisyon;
                 item.GetComponent<ParticleSystem>().Play();
-                AnlikKarakterSayisi--;
+                if (!Durum)
+                {
+                    AnlikKarakterSayisi--;
+                }
+                else
+                {
+                    KacDusmanOlsun--;
+                }
                 break;
             }
         }
@@ -108,6 +155,10 @@ public class GameManager : MonoBehaviour
                     break;
                 }
             }
+        }
+        if (!OyunBittimi)
+        {
+            SavasDurumu();
         }
     }
 }

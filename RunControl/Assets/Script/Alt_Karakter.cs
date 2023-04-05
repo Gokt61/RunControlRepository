@@ -26,7 +26,7 @@ public class Alt_Karakter : MonoBehaviour
         {
             Vector3 yeniPoz = new Vector3(transform.position.x, .23f, transform.position.z);
 
-            GameObject.FindWithTag("GameManager").GetComponent<GameManager>().YokOlmaEfektriOlustur(yeniPoz);
+            GameObject.FindWithTag("GameManager").GetComponent<GameManager>().YokOlmaEfektiOlustur(yeniPoz);
             gameObject.SetActive(false);
 
         }
@@ -35,7 +35,7 @@ public class Alt_Karakter : MonoBehaviour
         {
             Vector3 yeniPoz = new Vector3(transform.position.x, .23f, transform.position.z);
 
-            GameObject.FindWithTag("GameManager").GetComponent<GameManager>().YokOlmaEfektriOlustur(yeniPoz);
+            GameObject.FindWithTag("GameManager").GetComponent<GameManager>().YokOlmaEfektiOlustur(yeniPoz);
             gameObject.SetActive(false);
         }
         
@@ -43,7 +43,7 @@ public class Alt_Karakter : MonoBehaviour
         {
             Vector3 yeniPoz = new Vector3(transform.position.x, .23f, transform.position.z);
 
-            GameObject.FindWithTag("GameManager").GetComponent<GameManager>().YokOlmaEfektriOlustur(yeniPoz);
+            GameObject.FindWithTag("GameManager").GetComponent<GameManager>().YokOlmaEfektiOlustur(yeniPoz);
             gameObject.SetActive(false);
         }
 
@@ -51,7 +51,14 @@ public class Alt_Karakter : MonoBehaviour
         {
             Vector3 yeniPoz = new Vector3(transform.position.x, .23f, transform.position.z);
 
-            GameObject.FindWithTag("GameManager").GetComponent<GameManager>().YokOlmaEfektriOlustur(yeniPoz,true);
+            GameObject.FindWithTag("GameManager").GetComponent<GameManager>().YokOlmaEfektiOlustur(yeniPoz,true);
+            gameObject.SetActive(false);
+        }
+        if (other.CompareTag("Dusman"))
+        {
+            Vector3 yeniPoz = new Vector3(transform.position.x, .23f, transform.position.z);
+
+            GameObject.FindWithTag("GameManager").GetComponent<GameManager>().YokOlmaEfektiOlustur(yeniPoz,false,false);
             gameObject.SetActive(false);
         }
     }
