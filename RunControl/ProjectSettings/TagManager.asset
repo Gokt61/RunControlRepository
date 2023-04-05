@@ -16,6 +16,10 @@ TagManager:
   - Balyoz
   - Dusman
   - Sontetikleyici
+  - Direk
+  - SolDirek
+  - SagDirek
+  - BosKarakter
   layers:
   - Default
   - TransparentFX

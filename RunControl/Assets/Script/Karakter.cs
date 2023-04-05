@@ -54,4 +54,41 @@ public class Karakter : MonoBehaviour
             SonaGeldikmi = true;
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Direk"))
+        {
+            if (transform.position.x > 0)
+            {
+                transform.position = new Vector3(transform.position.x + 0.2f, transform.position.y, transform.position.z);
+            }
+            else
+            {
+                transform.position = new Vector3(transform.position.x - 0.2f, transform.position.y, transform.position.z);
+            }
+        }
+
+        if (collision.gameObject.CompareTag("igneliKutu") || collision.gameObject.CompareTag("PervaneIgneler"))
+        {
+            if (transform.position.x > 0)
+            {
+                transform.position = new Vector3(transform.position.x - 0.2f, transform.position.y, transform.position.z);
+            }
+            else
+            {
+                transform.position = new Vector3(transform.position.x + 0.2f, transform.position.y, transform.position.z);
+            }
+        }
+
+        if (collision.gameObject.CompareTag("SolDirek"))
+        {
+            transform.position = new Vector3(transform.position.x + 0.2f, transform.position.y, transform.position.z);
+        }
+
+        if (collision.gameObject.CompareTag("SagDirek"))
+        {
+            transform.position = new Vector3(transform.position.x - 0.2f, transform.position.y, transform.position.z);
+        }
+    }
 }
