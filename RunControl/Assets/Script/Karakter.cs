@@ -6,23 +6,36 @@ using UnityEngine.PlayerLoop;
 public class Karakter : MonoBehaviour
 {
     public GameManager _GameManager;
+    public GameObject _Kamera;
+    public bool SonaGeldikmi;
+    public GameObject Gidecegiyer;
 
     private void FixedUpdate()
     {
-        transform.Translate(Vector3.forward * 0.5f * Time.deltaTime);
+        if (!SonaGeldikmi)
+        {
+            transform.Translate(Vector3.forward * 0.5f * Time.deltaTime);
+        }
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (SonaGeldikmi)
         {
-            if (Input.GetAxis("Mouse X") < 0)
+            transform.position = Vector3.Lerp(transform.position, Gidecegiyer.transform.position, 0.05f);
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.Mouse0))
             {
-                transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x - .1f, transform.position.y, transform.position.z), 0.3f);
-            }
-            if (Input.GetAxis("Mouse X") > 0)
-            {
-                transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x + .1f, transform.position.y, transform.position.z), 0.3f);
+                if (Input.GetAxis("Mouse X") < 0)
+                {
+                    transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x - .1f, transform.position.y, transform.position.z), 0.3f);
+                }
+                if (Input.GetAxis("Mouse X") > 0)
+                {
+                    transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x + .1f, transform.position.y, transform.position.z), 0.3f);
+                }
             }
         }
     }
@@ -33,6 +46,12 @@ public class Karakter : MonoBehaviour
         {
             int sayi = int.Parse(other.name);
             _GameManager.AdamYonetimi(other.tag,sayi,other.transform);
+        }
+        else if (other.CompareTag("Sontetikleyici"))
+        {
+            _Kamera.GetComponent<Kamera>().SonaGeldikmi = true;
+            _GameManager.DusmanlariTetikle();
+            SonaGeldikmi = true;
         }
     }
 }
