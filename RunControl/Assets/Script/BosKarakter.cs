@@ -36,6 +36,7 @@ public class BosKarakter : MonoBehaviour
             {
                 MaterialDegistirveAnimasyonTetikle();
                 Temasvar = true;
+                GetComponent<AudioSource>().Play();
             }
         }
 
