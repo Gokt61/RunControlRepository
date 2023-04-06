@@ -11,6 +11,7 @@ public class BosKarakter : MonoBehaviour
     public NavMeshAgent _Navmesh;
     public Animator _Animator;
     public GameObject Target;
+    public GameManager _GameManager;
     bool Temasvar;
 
 
@@ -22,12 +23,52 @@ public class BosKarakter : MonoBehaviour
         }
     }
 
+    Vector3 PozisyonVer()
+    {
+        return new Vector3(transform.position.x, .23f, transform.position.z);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("AltKarakterler") || other.CompareTag("Player"))
         {
-            MaterialDegistirveAnimasyonTetikle();
-            Temasvar = true;
+            if (gameObject.CompareTag("BosKarakter"))
+            {
+                MaterialDegistirveAnimasyonTetikle();
+                Temasvar = true;
+            }
+        }
+
+        else if (other.CompareTag("igneliKutu"))
+        {
+            _GameManager.YokOlmaEfektiOlustur(PozisyonVer());
+            gameObject.SetActive(false);
+
+        }
+        else if (other.CompareTag("Testere"))
+        {
+            _GameManager.YokOlmaEfektiOlustur(PozisyonVer());
+
+            gameObject.SetActive(false);
+        }
+        else if (other.CompareTag("PervaneIgneler"))
+        {
+            _GameManager.YokOlmaEfektiOlustur(PozisyonVer());
+
+            gameObject.SetActive(false);
+        }
+        else if (other.CompareTag("Balyoz"))
+        {
+            _GameManager.YokOlmaEfektiOlustur(PozisyonVer(), true);
+
+            gameObject.SetActive(false);
+        }
+
+        else if (other.CompareTag("Dusman"))
+        {
+            _GameManager.YokOlmaEfektiOlustur(PozisyonVer(), false, false);
+
+            gameObject.SetActive(false);
         }
     }
 
@@ -36,7 +77,8 @@ public class BosKarakter : MonoBehaviour
         Material[] mats = _Renderer.materials;
         mats[0] = AtanacakMaterial;
         _Renderer.materials = mats;
-
         _Animator.SetBool("Saldir", true);
+        gameObject.tag = "AltKarakterler";
+        GameManager.AnlikKarakterSayisi++;
     }
 }

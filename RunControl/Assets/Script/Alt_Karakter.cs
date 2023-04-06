@@ -58,5 +58,10 @@ public class Alt_Karakter : MonoBehaviour
 
             gameObject.SetActive(false);
         }
+        else if (other.CompareTag("BosKarakter"))
+        {
+            _Gamemanager.Karakterler.Add(other.gameObject);
+            
+        }
     }
 }
